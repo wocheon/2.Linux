@@ -167,3 +167,12 @@ gsutil mv ${hostnm}_${today}.tar gs://gcp-in-ca-test-bucket-wocheon07/backup/vm_
 
 - 메타데이터로 등록 후 확인
 shutdown-script-url - gs://gcp-in-ca-test-bucket-wocheon07/backup/backup_to_gcpbucket.sh
+
+## 시작/종료 스크립트 동작 확인
+```bash
+#시작 스크립트
+journalctl -u google-startup-scripts.service
+
+#종료 스크립트
+journalctl -u google-shutdown-scripts.service
+```
