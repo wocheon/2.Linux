@@ -26,14 +26,20 @@ kill -15 %1
 
 ```bash
 [Unit]
-Description=Prometheus
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/root/prometheus/prometheus
-WorkingDirectory=/root/prometheus
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/share/node_exporter-1.6.1.linux-amd64/node_exporter
+WorkingDirectory=/root/node_exporter
 
 [Install]
 WantedBy=multi-user.target
+
 ```
 </br>
 
