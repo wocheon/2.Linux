@@ -168,3 +168,12 @@
 5. Label and Notifications 
     - Labels 
         - slack_channel = channel_2
+
+
+## 알림 채널에 Custom Template 할당 
+- home > Alerting > Contact points > 기존 채널 편집
+
+- Optional Slack Settings > Text Body 부분에 다음 내용 등록
+```
+{{ template "firing_and_resolved_alerts" .}}
+```
