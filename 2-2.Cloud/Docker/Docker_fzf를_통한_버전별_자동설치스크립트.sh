@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# fzf를 통한 docker 버전별 설치 스크립트
+# fzf를 통한 docker 버전별 설치 스크립트 
+# bash로 실행 필요 
 
 #도커 설치에 필요한 패키지 다운로드
 sudo apt update -y
@@ -50,3 +51,7 @@ echo "# apt install -y docker-ce=$choice_package_version docker-ce-cli=$choice_p
 apt install -y docker-ce=${choice_package_version} docker-ce-cli=${choice_package_version} containerd.io
 
 rm -rf docker_version_list.txt
+
+systmectl status docker 
+
+docker --version
