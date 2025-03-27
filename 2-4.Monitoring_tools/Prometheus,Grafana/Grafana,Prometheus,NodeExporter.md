@@ -101,10 +101,14 @@ mv node_exporter-1.6.1.linux-amd64 node_exporter
 ```bash
 [Unit]
 Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/root/node_exporter/node_exporter
-WorkingDirectory=/root/node_exporter
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/share/node_exporter/node_exporter
 
 [Install]
 WantedBy=multi-user.target
@@ -118,6 +122,37 @@ systemctl enable node_exporter --now
 systemctl status node_exporter
 ```
 </br>
+
+### Node_exporter 자동설치 스크립트
+```bash
+#!/bin/bash
+
+cd /usr/share/
+wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
+tar zxvf node_exporter-1.6.1.linux-amd64.tar.gz
+mv node_exporter-1.6.1.linux-amd64 node_exporter
+
+cat /etc/systemd/system/node_exporter.service << EOF >
+[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/share/node_exporter/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+
+systemctl enable node_exporter --now
+systemctl status node_exporter
+```
+
 
 $\textcolor{orange}{\textsf{* 포트 변경 필요 시}}$
 - 해당 내용의 node_exporter.service 의 [Service] 부분에 추가
