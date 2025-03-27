@@ -68,7 +68,7 @@ kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/container
 
 - Prometheus 공식 helm repository 추가
 ```
-helm repo add prometcd .heus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
 
