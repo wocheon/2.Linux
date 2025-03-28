@@ -199,7 +199,7 @@ systemctl restart prometheus grafana-server
 
 
 * 참고 - GCP상에 올라온 VM들 자동으로 검색하는 방법 
-```
+```yaml
   - job_name: 'NodeExporter'
     gce_sd_configs:
       - project: test_project
@@ -210,3 +210,4 @@ systemctl restart prometheus grafana-server
         zone: asia-northeast3-a
         port: 9100
         filter: (name="prd-*" status = "RUNNING")
+```        

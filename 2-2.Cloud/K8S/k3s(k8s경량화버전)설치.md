@@ -3,8 +3,9 @@
 - 간단한 쿠버네티스 환경 구축 혹은 테스트가 필요한 경우 사용
 - 단일 VM에 설치하여 쿠버네티스를 사용가능 
 - 경량화 버전이므로 k8s 모든기능은 다 포함되지않음
+- 기본적으로 containerd를 내장하고 있어서 별도의 Docker 설치 없이도 컨테이너를 실행 가능 
 
-
+### k3s 설치 
 
 ```bash
 curl -sfL https://get.k3s.io | sh -
@@ -46,5 +47,3 @@ $ helm upgrade --install argocd argo/argo-cd
 # MetalLB 설치 
 - Loadbalancer 서비스의 External_IP 가 Pending 상태에서 넘어가지 않는 현상 발생
 - K3s와 같은 경량 Kubernetes 배포판에서는 MetalLB 같은 로드 밸런서 솔루션이 필요
-
-
