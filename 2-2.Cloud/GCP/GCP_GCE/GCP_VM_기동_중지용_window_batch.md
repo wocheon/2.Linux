@@ -84,6 +84,21 @@ gcloud compute instances stop %INSTANCE% --project=%PROJECT% --zone=%ZONE% && pa
 ```
 
 ## VM 기동/중지를 선택하여 실행하는 Batch 
+- config bat파일 수정 
+```bat
+@echo off
+set PROVIDER=Google Cloud(GCP)
+set PROJECT=gcp-in-ca
+set INSTANCE=gcp-an3-a-iac-vm
+set ZONE=asia-northeast3-a
+
+for /f "delims=" %%i in ('gcloud compute instances list --filter="name=(%INSTANCE%)" --format="table(name,zone,MACHINE_TYPE,STATUS,INTERNAL_IP,EXTERNAL_IP)"') do (
+    set INSTANCE_STATE=%%i
+)
+```
+
+
+- 실행 bat 파일
 ```bat
 @echo off
 call gcp_iac_vm_config.bat
@@ -96,6 +111,11 @@ echo = * Instance's ZONE : %ZONE%    =
 echo ============================================
 echo.
 
+echo # Instance State
+echo NAME              ZONE               MACHINE_TYPE  STATUS      INTERNAL_IP    EXTERNAL_IP
+echo %INSTANCE_STATE%
+
+echo.
 echo # Select Action : 
 echo 1. Start Instance
 echo 2. Stop Instance 
