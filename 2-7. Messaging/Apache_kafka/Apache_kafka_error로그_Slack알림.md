@@ -150,9 +150,6 @@ consumer = KafkaConsumer(
     auto_offset_reset='latest'  # 처음부터 메시지를 받으려면 'earliest', 최신 메시지만 받으려면 'latest'
 )
 
-# Slack Webhook URL
-slack_webhook_url = "https://hooks.slack.com/services/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"
-
 # 메시지 필터링 함수 (예: "ERROR", "CRITICAL", "WARNING" 포함된 메시지만 Slack에 알림)
 def should_send_to_slack(message):
     # 정규 표현식으로 "ERROR", "CRITICAL", "WARNING"이 포함된 메시지 찾기
