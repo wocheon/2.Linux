@@ -24,6 +24,7 @@ import os
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"[{timestamp}] ✅ kafka_producer started.")
 
+# Kafka_Server_ip
 kafka_server_ip=os.getenv("KAFKA_SERVER_IP")
 
 # Kafka Producer 설정
@@ -139,7 +140,9 @@ import os
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"[{timestamp}] ✅ kafka_consumer started.")
 
+# Kafka_Server_ip
 kafka_server_ip=os.getenv("KAFKA_SERVER_IP")
+# Slack Webhook URL
 slack_webhook_url=os.getenv("SLACK_WEBHOOK_URL")
 
 # Kafka Consumer 설정
